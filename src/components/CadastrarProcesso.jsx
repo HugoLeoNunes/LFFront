@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CadastrarProcesso = () => {
+const CadastroProcesso = () => {
   const [numProcesso, setNumProcesso] = useState('');
   const [prazo, setPrazo] = useState('');
   const [audiencia, setAudiencia] = useState('');
@@ -12,23 +12,21 @@ const CadastrarProcesso = () => {
     event.preventDefault();
 
     try {
-      const params = new URLSearchParams();
-      params.append('num_processo', numProcesso);
-      params.append('prazo', prazo);
-      params.append('audiencia', audiencia);
-      params.append('status', status);
-      params.append('processo_relacionado', processoRelacionado);
-      params.append('patrono', patrono);
-
-      const url = 'http://127.0.0.1:5000/processo?' + params.toString();
-
-      const response = await fetch(url, {
+      const response = await fetch('http://127.0.0.1:5000/processo', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          numProcesso,
+          prazo,
+          audiencia,
+          status,
+          processoRelacionado,
+          patrono
+        }),
       });
 
-      if (response.ok) {
-        // Processo cadastrado com sucesso
-        alert('Processo cadastrado com sucesso!');
+      if (response.status === 200) {
+        alert('Processo adicionado!');
         // Limpar os campos do formulário
         setNumProcesso('');
         setPrazo('');
@@ -36,13 +34,12 @@ const CadastrarProcesso = () => {
         setStatus('');
         setProcessoRelacionado('');
         setPatrono('');
+        setCliente(''); // Limpe o campo do cliente
       } else {
-        // Erro ao cadastrar o processo
-        alert('Erro ao cadastrar o processo!');
+        alert('Erro ao adicionar processo.');
       }
     } catch (error) {
       console.error('Erro:', error);
-      alert('Erro ao cadastrar o processo!');
     }
   };
 
@@ -73,18 +70,18 @@ const CadastrarProcesso = () => {
           id="audiencia"
           value={audiencia}
           onChange={(e) => setAudiencia(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="status">Status:</label>
-        <input
-          type="text"
-          id="status"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        />
-      </div>
-      <div>
+          />
+        </div>
+        <div>
+          <label htmlFor="status">Status:</label>
+          <input
+            type="text"
+            id="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          />
+        </div>
+        <div>
         <label htmlFor="processoRelacionado">Processo Relacionado:</label>
         <input
           type="text"
@@ -102,9 +99,9 @@ const CadastrarProcesso = () => {
           onChange={(e) => setPatrono(e.target.value)}
         />
       </div>
-      <button type="submit">Cadastrar Processo</button>
+      <button type="submit">Cadastrar</button>
     </form>
   );
 };
 
-export default CadastrarProcesso;
+export default CadastroProcesso;

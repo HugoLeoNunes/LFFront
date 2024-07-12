@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  font-family: tahoma, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 2.0;
+  font-weight: 200;
+
+  color-scheme: light dark;
+  color: whitesmoke;
+  background-color: rgb(77, 0, 0);
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 20;
+  padding: 0;
+}
+
+
+ul {
+  font-size: large;
+  margin: 20px;
+  margin-left: 105px;
+  margin-right: 105px;
+  padding: 30px;
+  border-radius: 75px;
+  background-color: #010101;
+  text-align: center;
+  list-style-type: none
+}
+
+li {
+  margin: 5PX;
+  background-color: rgb(77, 0, 0);
+  border-radius: 0px 75px 0px 75px;
+  padding: 5px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5em;
+  text-align: center;
+  padding: 0;
+}
+
+/* Estilos para o formulário de cadastro de clientes */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 1000px; /* Define a largura do formulário */
+  margin: 0 auto;
+  padding: 50px;
+  border: 5px solid #000000;
+  border-radius: 0px 75px 0px 75px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+input[type="password"] {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 0px 75px 0px 75px;
+
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #000000; /* Cor preta para o botão */
+  font-size: x-large;
+  color: rgb(255, 255, 255);
+  padding: 15px;
+  margin-top: 25px;
+  border: 5px solid #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #e6db0a;
+  color:#000000;
+  border: 5px solid #000000;
+   /* Cor amarela ao passar o mouse */
+}
+
+/* Estilos para a ListaClientes */
+table {
+  width: 1100px;
+  font-size: large;
+  margin: 25px;
+  margin-left: 125px;
+  margin-right: 105px;
+  padding: 25px;
+  position: relative;
+  border-radius: 75px;
+  background-color: #010101;
+  text-align: center;
+}
+
+th {
+  margin: 5px;
+  background-color: rgb(77, 0, 0);
+  border-radius: 0px 75px 0px 75px;
+  padding: 5px;
+  text-align: center;
+}
+

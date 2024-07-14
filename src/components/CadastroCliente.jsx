@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const CadastroCliente = () => {
+const CadastroCliente = ({ setClientes }) => {
   const [cpf, setCpf] = useState('');
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -79,6 +79,31 @@ const CadastroCliente = () => {
         setIbge('');
         setNumero('');
         setCep('');
+
+        // Atualizar a lista de clientes no componente pai
+        setClientes(prevClientes => [...prevClientes, {
+          cpf,
+          nome,
+          telefone,
+          nomeSocial,
+          nacionalidade,
+          estadoCivil,
+          dataNascimento,
+          rg,
+          orgaoExpedidor,
+          ufDoc,
+          profissao,
+          email,
+          sexo,
+          rua,
+          bairro,
+          complemento,
+          cidade,
+          uf,
+          ibge,
+          numero,
+          cep,
+        }]);
       } else {
         alert('Erro ao adicionar cliente.');
       }

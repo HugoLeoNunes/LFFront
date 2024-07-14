@@ -37,10 +37,10 @@ const ListaClientes = () => {
     }
   };
 
-  const handleClientClick = (cpf) => {
-    // Navigate to the client details page with the CPF as a parameter
-    navigate(`/cliente/${cpf}`); 
-  };
+  // const handleClientClick = (cpf) => {
+  //   // Navigate to the client details page with the CPF as a parameter
+  //   navigate(`/cliente/${cpf}`); 
+  // };
 
   return (
     <table>
@@ -54,7 +54,7 @@ const ListaClientes = () => {
       </thead>
       <tbody>
         {clientes.map((client) => (
-          <tr key={client.cpf} onClick={() => handleClientClick(client.cpf)}> 
+          <tr key={client.cpf}> 
             <td>{client.cpf}</td>
             <td>{client.nome}</td>
             <td>{client.telefone}</td>

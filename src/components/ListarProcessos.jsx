@@ -16,7 +16,7 @@ const ListarProcessos = () => {
     };
 
     fetchData();
-  }, []);
+  }, []); // A dependência vazia [] faz com que o efeito seja executado apenas uma vez, na montagem do componente
 
   const handleDelete = async (numProcesso) => {
     try {
@@ -27,7 +27,7 @@ const ListarProcessos = () => {
       if (response.status === 200) {
         alert('Processo removido!');
         // Atualizar a lista de processos
-        setProcessos(processos.filter((process) => process.num_processo !== numProcesso));
+        setProcessos(processos.filter((process) => process.Num_processo !== numProcesso));
       } else {
         alert('Erro ao remover processo.');
       }
@@ -35,6 +35,22 @@ const ListarProcessos = () => {
       console.error('Erro:', error);
     }
   };
+
+  // Adicione um novo useEffect para atualizar a lista após a exclusão
+  useEffect(() => {
+    // Faça uma nova requisição à API para obter a lista atualizada de processos
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/processos');
+        const data = await response.json();
+        setProcessos(data.processos);
+      } catch (error) {
+        console.error('Erro:', error);
+      }
+    };
+
+    fetchData();
+  }, [processos]); // Adicione 'processos' como dependência para que o efeito seja executado sempre que a lista de processos mudar
 
   return (
     <table>

@@ -10,7 +10,7 @@ export default function Processos() {
     const [processos, setProcessos] = useState([])
     
     useEffect (() => {
-        axios.get ('http://localhost:8080/processos')
+        axios.get ('http://localhost:5000/processos')
         .then(res => setProcessos(res.data.Processos))
         .catch(err => console.log(err))
     },[])

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const CadastroCliente = ({ setClientes }) => {
+const CadastroCliente = () => {
   const [cpf, setCpf] = useState('');
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -51,10 +51,11 @@ const CadastroCliente = ({ setClientes }) => {
           uf,
           ibge,
           numero,
-          cep,
+          cep
         }),
       });
 
+      console.log(response);
       if (response.status === 200) {
         alert('Cliente adicionado!');
         // Limpar os campos do formulário
@@ -79,33 +80,9 @@ const CadastroCliente = ({ setClientes }) => {
         setIbge('');
         setNumero('');
         setCep('');
-
-        // Atualizar a lista de clientes no componente pai
-        setClientes(prevClientes => [...prevClientes, {
-          cpf,
-          nome,
-          telefone,
-          nomeSocial,
-          nacionalidade,
-          estadoCivil,
-          dataNascimento,
-          rg,
-          orgaoExpedidor,
-          ufDoc,
-          profissao,
-          email,
-          sexo,
-          rua,
-          bairro,
-          complemento,
-          cidade,
-          uf,
-          ibge,
-          numero,
-          cep,
-        }]);
       } else {
-        alert('Erro ao adicionar cliente.');
+        const errorResponse = await response.json();
+        alert(errorResponse.error);
       }
     } catch (error) {
       console.error('Erro:', error);

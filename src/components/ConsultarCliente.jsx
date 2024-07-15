@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import BotaoConsultar from './BotaoConsultar'; // Importe o componente
-
 
 const ConsultarCliente = () => {
   const [cpf, setCpf] = useState('');

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 
 const ListaClientes = () => {
   const [clientes, setClientes] = useState([]);
-  const navigate = useNavigate(); // Initialize useNavigate
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,10 +37,20 @@ const ListaClientes = () => {
     }
   };
 
-  // const handleClientClick = (cpf) => {
-  //   // Navigate to the client details page with the CPF as a parameter
-  //   navigate(`/cliente/${cpf}`); 
-  // };
+  useEffect(() => {
+    // Faça uma nova requisição à API para obter a lista atualizada de Clientes
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/clientes');
+        const data = await response.json();
+        setClientes(data.clientes);
+      } catch (error) {
+        console.error('Erro:', error);
+      }
+    };
+
+    fetchData();
+  }, [clientes]); // Adicione 'clientes' como dependência para que o efeito seja executado sempre que a lista de clientes mudar
 
   return (
     <table>

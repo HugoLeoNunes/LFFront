@@ -10,7 +10,7 @@ export default function Clientes() {
     const [clientes, setClientes] = useState([])
     
     useEffect (() => {
-        axios.get ('http://localhost:8080/clientes')
+        axios.get ('http://localhost:5000/clientes')
         .then(res => setClientes(res.data.Clientes))
         .catch(err => console.log(err))
     },[])
